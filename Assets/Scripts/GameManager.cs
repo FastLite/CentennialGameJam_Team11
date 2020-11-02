@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused = false;
     public bool isHuman = true;
     public GameObject pauseScreen;
-    public GameManager humanPrefab;
+    public GameObject humanPrefab;
+    public GameObject lvl1Text;
+    public GameObject lvl2Text;
+    public Text levelPassed;
 
 
     // Start is called before the first frame update
