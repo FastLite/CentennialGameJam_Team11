@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Team Scenes/Scene_Terry.unity
+    guid: e69fbc170f7a84b489e4a75168b3f823
+  - enabled: 1
+    path: Assets/Scenes/Team Scenes/lvl1_Tutotial.unity
+    guid: b483b2fdce4c2d34ebd9b440f1eb8da5
+  - enabled: 1
+    path: Assets/Scenes/Team Scenes/lvl2_TrueLevel1.unity
+    guid: 99ec2eff3ad3592429ab4270172ff9a2
+  - enabled: 1
+    path: Assets/Scenes/Team Scenes/lvl3_TrueLevel2.unity
+    guid: 07916f81af3f8d446bca45a7316019b5
   m_configObjects: {}

@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
     public GameObject lvl1Text;
     public GameObject lvl2Text;
     public Text levelPassed;
+    public int currentScene = 0;
+    //fsbsfbsfbs
 
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.GetInt("LastScenePlayed", 0);
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(pauseScreen);
     }
 
     // Update is called once per frame
@@ -26,48 +30,49 @@ public class GameManager : MonoBehaviour
     {
         // Opens up the pause menu and stops the game so the player can restart
         if(Input.GetKeyDown(KeyCode.Escape))
-        {    
+        {
             if(isGamePaused == false)
             {
                 pauseScreen.SetActive(true);
-                Time.timeScale = 0;
+                isGamePaused = true;
             }      
             else
             {
                 pauseScreen.SetActive(false);
-                Time.timeScale = 0;
+                isGamePaused = false;
             }             
         }
     }
 
     // Start the game
-    //public void StartFirstLevel()
-    //{
-    //    SceneManager.UnloadSceneAsync(Scene 0);
-    //    SceneManager.LoadScene(Scene 1);
-    //    SwitchToHumanIfNotHuman();
-    //}
+    public void StartNextLevel(int nextScene)
+    {
+        if (isGamePaused == true)
+        {
+            pauseScreen.SetActive(false);
+            isGamePaused = false;
+        }
 
-    // Restart the game
-    //public void RestartGame()
-    //{
-    //    SceneManager.UnloadSceneAsync(Scene 1);
-    //    SceneManager.LoadScene(Scene 0);
-    //    SwitchToHumanIfNotHuman();
-    //}
+        SceneManager.UnloadSceneAsync(currentScene);
+        SceneManager.LoadScene(nextScene);
+        Instantiate(pauseScreen);
 
-    //public void BackToMenu()
-    //{
-    //    SceneManager.UnloadSceneAsync(Scene 1);
-    //    SceneManager.LoadScene(Scene 0);
-    //}
+        currentScene = nextScene;
+        if(currentScene != 0)
+        {
+            PlayerPrefs.SetInt("LastScenePlayed", currentScene);
+        }
+    }
 
-    //public void Tutorial()
-    //{
-    //    SceneManager.UnloadSceneAsync(Scene 1);
-    //    SceneManager.LoadScene(Scene 0);
-    //    SwitchToHumanIfNotHuman();
-    //}
+    public void ContinueGame()
+    {
+        StartNextLevel(PlayerPrefs.GetInt("LastScenePlayed"));
+    }
+
+    public void Restart()
+    {
+        StartNextLevel(currentScene);
+    }
 
     // Switch back to human at restart method
     public void SwitchToHumanIfNotHuman()
@@ -76,10 +81,5 @@ public class GameManager : MonoBehaviour
         Destroy(humanPrefab);
         Instantiate(humanPrefab, transform.position, transform.rotation);
         isHuman = true;
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 }
