@@ -46,15 +46,6 @@ public class PlayerController : MonoBehaviour
             //"to the LEFT to the left"
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, 0);
         }
-        else
-        {
-            if (Input.GetKey(KeyCode.A) && !grounded)
-            {
-                //"to the LEFT to the left"
-                GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, jumpHeight -= 0);
-            }
-
-
 
             if (Input.GetKey(KeyCode.D))
             {
@@ -64,4 +55,4 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-}
+

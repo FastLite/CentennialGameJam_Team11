@@ -5141,7 +5141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpHeight: 10
-  groundCheck: {fileID: 1822180089}
+  groundCheck: {fileID: 1450069305}
   groundCheckRadius: 2
   whatIsGround:
     serializedVersion: 2
@@ -6632,7 +6632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450069305}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lvl Border Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8300,7 +8300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1912648117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
