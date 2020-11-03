@@ -62,6 +62,13 @@ public class GameManager : MonoBehaviour
     //    SceneManager.LoadScene(Scene 0);
     //}
 
+    //public void Tutorial()
+    //{
+    //    SceneManager.UnloadSceneAsync(Scene 1);
+    //    SceneManager.LoadScene(Scene 0);
+    //    SwitchToHumanIfNotHuman();
+    //}
+
     // Switch back to human at restart method
     public void SwitchToHumanIfNotHuman()
     {
