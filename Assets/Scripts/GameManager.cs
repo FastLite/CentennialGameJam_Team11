@@ -66,8 +66,13 @@ public class GameManager : MonoBehaviour
     public void SwitchToHumanIfNotHuman()
     {
         // Even though the player is still human, it will delete and create back the human
-        Destroy(gameObject);
+        Destroy(humanPrefab);
         Instantiate(humanPrefab, transform.position, transform.rotation);
         isHuman = true;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
