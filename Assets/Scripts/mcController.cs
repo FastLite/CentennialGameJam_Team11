@@ -16,6 +16,7 @@ public class mcController : MonoBehaviour
 
     private bool facingRight = true;
 
+    
     private bool isGrounded;
     public Transform groundCheck;
     public float checkRadius;
@@ -38,11 +39,11 @@ public class mcController : MonoBehaviour
         if(facingRight == false && moveInput > 0)
         {
             Flip();
-            Debug.Log("I flipped left");
+            Debug.Log(facingRight+ "I flipped left");
         }else if(facingRight == true && moveInput < 0)
         {
             Flip();
-            Debug.Log("I flipped right");
+            Debug.Log(facingRight + "I flipped right");
         }
     }
 
