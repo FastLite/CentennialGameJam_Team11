@@ -7,7 +7,7 @@ public class GhostSpawner : MonoBehaviour
     public Transform ghostSpawner;
     public GameObject GhostPrefab;
 
-    private bool GhostExits;
+    public bool GhostExits;
 
    
     // Update is called once per frame
@@ -25,22 +25,24 @@ public class GhostSpawner : MonoBehaviour
        
 
 
-        void GoingGhost()
-        {  
-            // Instantiates the 'GhostPrefab' object if it didn't Exit yet then prevents it from instantiating if it exists
-            if (GhostExits == false)
-            {
-                Instantiate(GhostPrefab, ghostSpawner.position, ghostSpawner.rotation);
-                GhostExits = true;
-            }
-            else if (GhostExits == true)
-            {
-                return;
-            } 
-        }
+        
 
 
         
+    }
+    
+    public void GoingGhost()
+    {  
+        // Instantiates the 'GhostPrefab' object if it didn't Exit yet then prevents it from instantiating if it exists
+        if (GhostExits == false)
+        {
+            Instantiate(GhostPrefab, ghostSpawner.position, ghostSpawner.rotation);
+            GhostExits = true;
+        }
+        else if (GhostExits == true)
+        {
+            return;
+        } 
     }
 
     
