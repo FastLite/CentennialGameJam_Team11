@@ -9,13 +9,11 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused = false;
     public bool isHuman = true;
     public GameObject pauseScreen;
+    public GameObject levelCompletedScreen;
+    public GameObject EndScreenMenuButton;
     public GameObject humanPrefab;
-    public GameObject lvl1Text;
-    public GameObject lvl2Text;
-    public Text levelPassed;
+    public Text levelCompletionText;
     public int currentScene = 0;
-    //fsbsfbsfbs
-
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +21,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.GetInt("LastScenePlayed", 0);
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(pauseScreen);
+        DontDestroyOnLoad(levelCompletedScreen);
     }
 
     // Update is called once per frame
@@ -72,6 +71,8 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         StartNextLevel(currentScene);
+        pauseScreen.SetActive(false);
+        isGamePaused = false;
     }
 
     // Switch back to human at restart method
@@ -81,5 +82,35 @@ public class GameManager : MonoBehaviour
         Destroy(humanPrefab);
         Instantiate(humanPrefab, transform.position, transform.rotation);
         isHuman = true;
+    }
+
+    public void WinGame()
+    {
+        levelCompletedScreen.SetActive(true);
+
+        if(currentScene == 1)
+        {
+            EndScreenMenuButton.SetActive(false);
+            levelCompletionText.text = "Level Completed! You have collected the Diamond of Wisdom!";
+            Invoke("WaitBeforeClosingMessageWindow", 3.5f);
+            StartNextLevel(currentScene+1);
+
+        }
+        else if(currentScene == 2)
+        {
+            EndScreenMenuButton.SetActive(true);
+            EndScreenMenuButton.SetActive(true);
+            levelCompletionText.text = "You have completed all the levels! You are now the True God!";          
+        }      
+    }
+
+    public void WaitBeforeClosingMessageWindow()
+    {
+        levelCompletedScreen.SetActive(false);
+    }
+
+    public void ResetDataAfterGame()
+    {
+        currentScene = 0;
     }
 }
