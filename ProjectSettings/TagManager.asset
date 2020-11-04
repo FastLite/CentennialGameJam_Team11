@@ -18,8 +18,8 @@ TagManager:
   - Ground
   - Player
   - Border
-  - 
-  - 
+  - GhostWall
+  - Ghost
   - 
   - 
   - 
