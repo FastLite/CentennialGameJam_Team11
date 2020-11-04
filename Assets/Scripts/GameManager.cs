@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         if(currentScene == 1)
         {
             EndScreenMenuButton.SetActive(false);
-            levelCompletionText.text = "Level Completed! You have collected the Diamond of Wisdom!";
+            levelCompletionText.text = "Tutorial Level Completed! You have collected the Diamond of Wisdom!";
             Invoke("WaitBeforeClosingMessageWindow", 3.5f);
             StartNextLevel(currentScene+1);
 
