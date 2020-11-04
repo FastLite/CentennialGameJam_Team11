@@ -7,7 +7,7 @@ public class GhostController : MonoBehaviour
 {
     public float ghostSpeed;
     public Rigidbody2D rbGhost;
-    public KeyCode immaterial;
+   // public KeyCode immaterial;
 
     private Vector2 moveDirection;
     
@@ -16,12 +16,12 @@ public class GhostController : MonoBehaviour
     {
         ProcessInputs();
 
-        if (Input.GetKeyDown(immaterial))
-        {
-            GetComponent<Rigidbody2D>().gravityScale = 0;
-            GetComponent<CircleCollider2D>().isTrigger = true;
-
-        }
+      // if (Input.GetKeyDown(immaterial))
+      // {
+      //     GetComponent<Rigidbody2D>().gravityScale = 0;
+      //     GetComponent<CircleCollider2D>().isTrigger = true;
+      //
+      // }
     }
 
      void FixedUpdate()
@@ -38,19 +38,24 @@ public class GhostController : MonoBehaviour
     }
     void Move() // Method the control the Playeer's Ghost movement
     {
-        rbGhost.velocity = new Vector2(moveDirection.x * ghostSpeed, moveDirection.y * ghostSpeed);
+        rbGhost.velocity = new Vector2(moveDirection.x * ghostSpeed, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       // if(collision.gameObject.name == "Border Holder)")
+       // if(collision.gameObject.name == "Wall)")
         {
             if(collision.gameObject.CompareTag("Wall"))
             {
-                GetComponent<CircleCollider2D>().isTrigger = true;
+                GetComponent<CircleCollider2D>().isTrigger = false;
                 Debug.Log(gameObject + "Hit the wall");
             }
-           // rbGhost.velocity = Vector2.zero;
+            if(collision.gameObject.name == "MonsterA")
+            {
+                GetComponent<mcController>();
+                gameObject.SetActive(false);
+            }
+           
         }
     }
 
