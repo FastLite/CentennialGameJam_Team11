@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public bool isGamePaused = false;
     public bool isHuman = true;
     public GameObject pauseScreen;
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerPrefs.GetInt("LastScenePlayed", 0);
+        DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(pauseScreen);
         DontDestroyOnLoad(levelCompletedScreen);
@@ -56,13 +59,13 @@ public class GameManager : MonoBehaviour
             isGamePaused = false;
             ResetTimeScale();
         }
-
+        
         SceneManager.UnloadSceneAsync(currentScene);
-        SceneManager.LoadSceneAsync(nextScene);
+        SceneManager.LoadScene(nextScene);
         //Instantiate(pauseScreen);
 
         currentScene = nextScene;
-        if(currentScene != 0)
+        if (currentScene != 0)
         {
             PlayerPrefs.SetInt("LastScenePlayed", currentScene);
         }
@@ -123,6 +126,7 @@ public class GameManager : MonoBehaviour
     public void ResetDataAfterGame(int nextScene)
     {
         currentScene = 0;
+        Destroy(gameObject);
     }
 
     public void ResetTimeScale()
