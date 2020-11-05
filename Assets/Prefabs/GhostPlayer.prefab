@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostSpeed: 5
   rbGhost: {fileID: 3875578841813280879}
+  playerPrefab: {fileID: 7115985908176466143, guid: ec2b2096dc707f544b469ecdce98151c,
+    type: 3}
 --- !u!50 &3875578841813280879
 Rigidbody2D:
   serializedVersion: 4

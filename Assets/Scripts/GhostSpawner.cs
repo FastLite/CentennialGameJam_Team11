@@ -36,7 +36,7 @@ public class GhostSpawner : MonoBehaviour
         // Instantiates the 'GhostPrefab' object if it didn't Exit yet then prevents it from instantiating if it exists
         if (GhostExits == false)
         {
-            Instantiate(GhostPrefab, ghostSpawner.position, ghostSpawner.rotation);
+            Instantiate(GhostPrefab, gameObject.transform.position, gameObject.transform.rotation);
             GhostExits = true;
         }
         else if (GhostExits == true)

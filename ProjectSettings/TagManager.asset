@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spike
   - Wall
+  - Possesive
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Border
   - GhostWall
   - Ghost
-  - 
+  - Creatures
   - 
   - 
   - 

@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,8 +10,12 @@ public class GhostController : MonoBehaviour
     public float ghostSpeed;
     public Rigidbody2D rbGhost;
    // public KeyCode immaterial;
+   
 
     private Vector2 moveDirection;
+    
+    
+    public GameObject playerPrefab;
     
     // Update is called once per frame
     void Update()
@@ -64,4 +70,32 @@ public class GhostController : MonoBehaviour
     //
     //      rbGhost.velocity = new Vector2(moveDirection.x * 0, moveDirection.y * 0);
     //  }
+
+    
+    
+    
+    Component CopyComponent(Component original, GameObject destination)
+    {
+        System.Type type = original.GetType();
+        Component copy = destination.AddComponent(type);
+        // Copied fields can be restricted with BindingFlags
+        System.Reflection.FieldInfo[] fields = type.GetFields(); 
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            field.SetValue(copy, field.GetValue(original));
+        }
+        return copy;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        Debug.Log("I should collide creature " + other.gameObject.name);
+        if (other.gameObject.CompareTag("spider") && Input.GetKeyDown("e"))
+        {
+            Destroy(this.gameObject);
+            Instantiate()
+            
+            Debug.Log("I should posses creature " + other.gameObject.name);
+        }    
+    }
 }
