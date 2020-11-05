@@ -15,7 +15,8 @@ public class GhostController : MonoBehaviour
     private Vector2 moveDirection;
     
     
-    public GameObject playerPrefab;
+    public GameObject spiderPrefab;
+    public GameObject wormPrefab;
     
     // Update is called once per frame
     void Update()
@@ -90,12 +91,14 @@ public class GhostController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         Debug.Log("I should collide creature " + other.gameObject.name);
-        if (other.gameObject.CompareTag("spider") && Input.GetKeyDown("e"))
-        {
-            Destroy(this.gameObject);
-            Instantiate()
+
+
+        if (!Input.GetKeyDown("e")) return;
+        GameObject gm  = Instantiate(spiderPrefab, transform.position, transform.rotation);
+        Destroy(this.gameObject);
+        Destroy(other.gameObject);
             
-            Debug.Log("I should posses creature " + other.gameObject.name);
-        }    
+            
+        Debug.Log("I should posses creature " + other.gameObject.name);
     }
 }

@@ -100,7 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostSpeed: 5
   rbGhost: {fileID: 3875578841813280879}
-  playerPrefab: {fileID: 7115985908176466143, guid: ec2b2096dc707f544b469ecdce98151c,
+  spiderPrefab: {fileID: 460979596438537146, guid: 691bcce87a843a040afcd1aaabb18ae4,
+    type: 3}
+  wormPrefab: {fileID: 3693219625044121791, guid: 3312e24660cca8046bde18e330e67d74,
     type: 3}
 --- !u!50 &3875578841813280879
 Rigidbody2D:
