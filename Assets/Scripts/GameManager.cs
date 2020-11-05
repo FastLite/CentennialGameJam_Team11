@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject levelCompletedScreen;
     public GameObject endScreenMenuButton;
     public GameObject gameOverScreen;
-    public GameObject humanPrefab;
+    public GameObject messageBoxScreen;
     public Text levelCompletionText;
     public int currentScene = 0;
 
@@ -26,12 +26,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        themeMusic.Play();
         PlayerPrefs.GetInt("LastScenePlayed", 0);
-        DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(pauseScreen);
         DontDestroyOnLoad(levelCompletedScreen);
         DontDestroyOnLoad(gameOverScreen);
+        DontDestroyOnLoad(messageBoxScreen);
     }
 
     // Update is called once per frame
@@ -53,6 +54,11 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
             }             
         }
+
+        if(messageBoxScreen == true && currentScene != 1)
+        {
+            messageBoxScreen.SetActive(false);
+        }
     }
 
     // Start the game
@@ -64,7 +70,17 @@ public class GameManager : MonoBehaviour
             isGamePaused = false;
             ResetTimeScale();
         }
-        
+
+        if (nextScene == 1)
+        {
+            TurnOnMessageBox();
+        }
+ 
+        if(nextScene == 0)
+        {
+            Destroy(gameObject, 0.1f);
+        }
+
         SceneManager.UnloadSceneAsync(currentScene);
         SceneManager.LoadScene(nextScene);
         //Instantiate(pauseScreen);
@@ -88,16 +104,7 @@ public class GameManager : MonoBehaviour
         pauseScreen.SetActive(false);
         isGamePaused = false;
     }
-
-    // Switch back to human at restart method
-    public void SwitchToHumanIfNotHuman()
-    {
-        // Even though the player is still human, it will delete and create back the human
-        Destroy(humanPrefab);
-        Instantiate(humanPrefab, transform.position, transform.rotation);
-        isHuman = true;
-    }
-
+    
     public void WinGame()
     {
         levelCompletedScreen.SetActive(true);
@@ -143,5 +150,21 @@ public class GameManager : MonoBehaviour
     public void ResetTimeScale()
     {
         Time.timeScale = 1;
+    }
+
+    public void TurnOnMessageBox()
+    {
+        messageBoxScreen.SetActive(true);
+        Invoke("WaitForTimeToCloseMessage", 3.5f);
+    }
+
+    public void WaitForTimeToCloseMessage()
+    {
+        messageBoxScreen.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -79,7 +79,7 @@ public class mcController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
 
-        }else if(Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded){
+        }else if(Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded){
             rb.velocity = Vector2.up * jumpForce;
 
         }

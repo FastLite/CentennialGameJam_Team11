@@ -17,7 +17,14 @@ public class GhostController : MonoBehaviour
     
     public GameObject spiderPrefab;
     public GameObject wormPrefab;
-    
+
+    public GameManager gm;
+
+    private void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -93,12 +100,22 @@ public class GhostController : MonoBehaviour
         Debug.Log("I should collide creature " + other.gameObject.name);
 
 
-        if (!Input.GetKeyDown("e")) return;
-        GameObject gm  = Instantiate(spiderPrefab, transform.position, transform.rotation);
-        Destroy(this.gameObject);
-        Destroy(other.gameObject);
+        if (Input.GetKeyDown("e") && gm.currentScene == 1)
+        {
+            GameObject gm = Instantiate(spiderPrefab, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+            Destroy(other.gameObject);
+        }
+        else if (Input.GetKeyDown("e") && gm.currentScene == 2)
+        {
+            GameObject gm = Instantiate(wormPrefab, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+            Destroy(other.gameObject);
+        }
+        return;
+        
             
             
-        Debug.Log("I should posses creature " + other.gameObject.name);
+        //Debug.Log("I should posses creature " + other.gameObject.name);
     }
 }
