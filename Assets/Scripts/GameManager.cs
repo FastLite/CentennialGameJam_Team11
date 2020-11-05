@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     public Text levelCompletionText;
     public int currentScene = 0;
 
+    public AudioSource themeMusic;
+    public AudioSource deathSound;
+    public AudioSource puzzleSolved;
+    public AudioSource singleLevelComplete;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         StartNextLevel(currentScene);
+        themeMusic.Play();
         pauseScreen.SetActive(false);
         isGamePaused = false;
     }
@@ -98,14 +104,17 @@ public class GameManager : MonoBehaviour
 
         if(currentScene == 1)
         {
+            singleLevelComplete.Play();
             endScreenMenuButton.SetActive(false);
             levelCompletionText.text = "Tutorial Level Completed! You have collected the Diamond of Wisdom!";
-            Invoke("WaitBeforeClosingMessageWindow", 3.5f);
+            Invoke("WaitBeforeClosingMessageWindow", 5f);
             StartNextLevel(currentScene+1);
 
         }
         else if(currentScene == 2)
         {
+            themeMusic.Stop();
+            puzzleSolved.Play();
             endScreenMenuButton.SetActive(true);
             levelCompletionText.text = "You have completed all the levels! You are now the True God!";
             Time.timeScale = 0;
@@ -114,6 +123,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        themeMusic.Stop();
+        deathSound.Play();
         Time.timeScale = 0;
         gameOverScreen.SetActive(true);
     }
