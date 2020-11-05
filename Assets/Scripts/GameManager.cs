@@ -30,17 +30,19 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Opens up the pause menu and stops the game so the player can restart
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && currentScene != 0)
         {
             if(isGamePaused == false)
             {
                 pauseScreen.SetActive(true);
                 isGamePaused = true;
+                Time.timeScale = 0;
             }      
             else
             {
                 pauseScreen.SetActive(false);
                 isGamePaused = false;
+                Time.timeScale = 1;
             }             
         }
     }
@@ -52,11 +54,12 @@ public class GameManager : MonoBehaviour
         {
             pauseScreen.SetActive(false);
             isGamePaused = false;
+            ResetTimeScale();
         }
 
         SceneManager.UnloadSceneAsync(currentScene);
-        SceneManager.LoadScene(nextScene);
-        Instantiate(pauseScreen);
+        SceneManager.LoadSceneAsync(nextScene);
+        //Instantiate(pauseScreen);
 
         currentScene = nextScene;
         if(currentScene != 0)
@@ -101,8 +104,8 @@ public class GameManager : MonoBehaviour
         else if(currentScene == 2)
         {
             endScreenMenuButton.SetActive(true);
-            endScreenMenuButton.SetActive(true);
-            levelCompletionText.text = "You have completed all the levels! You are now the True God!";          
+            levelCompletionText.text = "You have completed all the levels! You are now the True God!";
+            Time.timeScale = 0;
         }      
     }
 
@@ -117,7 +120,7 @@ public class GameManager : MonoBehaviour
         levelCompletedScreen.SetActive(false);
     }
 
-    public void ResetDataAfterGame()
+    public void ResetDataAfterGame(int nextScene)
     {
         currentScene = 0;
     }
