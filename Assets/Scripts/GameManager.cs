@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public bool isHuman = true;
     public GameObject pauseScreen;
     public GameObject levelCompletedScreen;
-    public GameObject EndScreenMenuButton;
+    public GameObject endScreenMenuButton;
+    public GameObject gameOverScreen;
     public GameObject humanPrefab;
     public Text levelCompletionText;
     public int currentScene = 0;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(pauseScreen);
         DontDestroyOnLoad(levelCompletedScreen);
+        DontDestroyOnLoad(gameOverScreen);
     }
 
     // Update is called once per frame
@@ -90,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         if(currentScene == 1)
         {
-            EndScreenMenuButton.SetActive(false);
+            endScreenMenuButton.SetActive(false);
             levelCompletionText.text = "Tutorial Level Completed! You have collected the Diamond of Wisdom!";
             Invoke("WaitBeforeClosingMessageWindow", 3.5f);
             StartNextLevel(currentScene+1);
@@ -98,10 +100,16 @@ public class GameManager : MonoBehaviour
         }
         else if(currentScene == 2)
         {
-            EndScreenMenuButton.SetActive(true);
-            EndScreenMenuButton.SetActive(true);
+            endScreenMenuButton.SetActive(true);
+            endScreenMenuButton.SetActive(true);
             levelCompletionText.text = "You have completed all the levels! You are now the True God!";          
         }      
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        gameOverScreen.SetActive(true);
     }
 
     public void WaitBeforeClosingMessageWindow()
@@ -112,5 +120,10 @@ public class GameManager : MonoBehaviour
     public void ResetDataAfterGame()
     {
         currentScene = 0;
+    }
+
+    public void ResetTimeScale()
+    {
+        Time.timeScale = 1;
     }
 }

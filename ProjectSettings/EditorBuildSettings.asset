@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Team Scenes/lvl2_TrueLevel1.unity
     guid: 99ec2eff3ad3592429ab4270172ff9a2
-  - enabled: 1
-    path: Assets/Scenes/Team Scenes/lvl3_TrueLevel2.unity
-    guid: 07916f81af3f8d446bca45a7316019b5
   m_configObjects: {}

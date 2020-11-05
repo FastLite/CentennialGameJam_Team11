@@ -22,6 +22,8 @@ public class mcController : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
 
+    public Animator playerAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,15 @@ public class mcController : MonoBehaviour
         {
             Flip();
             Debug.Log(facingRight + "I flipped right");
+        }
+
+        if(rb.velocity.x > 0 || rb.velocity.x < 0)
+        {
+            playerAnim.SetBool("isMoving", true);
+        }
+        else if(rb.velocity.x == 0)
+        {
+            playerAnim.SetBool("isMoving", false);
         }
     }
 
