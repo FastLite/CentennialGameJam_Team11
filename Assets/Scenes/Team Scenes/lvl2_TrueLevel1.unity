@@ -1490,7 +1490,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &743969683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2603,7 +2603,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1146311565
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3463,7 +3463,7 @@ PrefabInstance:
     - target: {fileID: 2304031149415753989, guid: 58d721175d136ee4c8f6ca5188282d81,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -29
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 2304031149415753989, guid: 58d721175d136ee4c8f6ca5188282d81,
         type: 3}
@@ -3519,6 +3519,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DiamondOfWisdom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304031149565457700, guid: 58d721175d136ee4c8f6ca5188282d81,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -1.5691137
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304031149565457700, guid: 58d721175d136ee4c8f6ca5188282d81,
+        type: 3}
+      propertyPath: m_Radius
+      value: 22.810198
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d721175d136ee4c8f6ca5188282d81, type: 3}
@@ -4130,7 +4140,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1964976510
 BoxCollider2D:
   m_ObjectHideFlags: 0

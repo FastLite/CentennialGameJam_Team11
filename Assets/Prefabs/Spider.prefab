@@ -189,7 +189,7 @@ MonoBehaviour:
   moveInput: 0
   extraJumpValue: 0
   groundCheck: {fileID: 4129580561132375548}
-  checkRadius: 0.3
+  checkRadius: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
