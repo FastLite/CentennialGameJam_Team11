@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
 
     public bool isGamePaused = false;
     public bool isHuman = true;
@@ -22,6 +21,8 @@ public class GameManager : MonoBehaviour
     public AudioSource deathSound;
     public AudioSource puzzleSolved;
     public AudioSource singleLevelComplete;
+    public AudioSource clickSound;
+    public AudioSource possessingSound;
 
     // Start is called before the first frame update
     void Start()
@@ -166,5 +167,20 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void PlayClickSound()
+    {
+        clickSound.Play();
+    }
+
+    public void PlayPossessingSound()
+    {
+        possessingSound.Play();
+    }
+
+    public void ResetPlayerPrefAfterFinishingGame()
+    {
+        PlayerPrefs.SetInt("LastScenePlayed", 0);
     }
 }

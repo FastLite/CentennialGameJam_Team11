@@ -29,13 +29,6 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         ProcessInputs();
-
-      // if (Input.GetKeyDown(immaterial))
-      // {
-      //     GetComponent<Rigidbody2D>().gravityScale = 0;
-      //     GetComponent<CircleCollider2D>().isTrigger = true;
-      //
-      // }
     }
 
      void FixedUpdate()
@@ -102,7 +95,8 @@ public class GhostController : MonoBehaviour
 
         if (Input.GetKeyDown("e") && gm.currentScene == 1)
         {
-            GameObject gm = Instantiate(spiderPrefab, transform.position, transform.rotation);
+            GameObject go = Instantiate(spiderPrefab, transform.position, transform.rotation);
+            gm.PlayPossessingSound();
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }
